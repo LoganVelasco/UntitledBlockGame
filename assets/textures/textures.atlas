@@ -1,0 +1,62 @@
+
+textures.png
+size: 1024,4096
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+boulder
+  rotate: false
+  xy: 202, 205
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+enemy
+  rotate: false
+  xy: 802, 3401
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+firstDraftWorldMap
+  rotate: false
+  xy: 1, 401
+  size: 800, 3200
+  orig: 800, 3200
+  offset: 0, 0
+  index: -1
+forestLevel1
+  rotate: false
+  xy: 1, 256
+  size: 256, 144
+  orig: 256, 144
+  offset: 0, 0
+  index: -1
+goal
+  rotate: false
+  xy: 1, 55
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+greenBlock
+  rotate: false
+  xy: 258, 300
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+player
+  rotate: false
+  xy: 1, 1
+  size: 57, 53
+  orig: 57, 53
+  offset: 0, 0
+  index: -1
+transparentLotus
+  rotate: false
+  xy: 802, 3200
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1

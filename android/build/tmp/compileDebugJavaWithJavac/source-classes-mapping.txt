@@ -1,0 +1,2 @@
+com/github/loganvelasco/bp2/BuildConfig.java
+ com.github.loganvelasco.bp2.BuildConfig

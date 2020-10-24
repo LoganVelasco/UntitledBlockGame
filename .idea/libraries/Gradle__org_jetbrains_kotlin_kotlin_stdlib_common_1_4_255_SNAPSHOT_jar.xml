@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.4.255-SNAPSHOT@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.4.255-SNAPSHOT/7a662ee953fc9c1d3ef23502acfd924119c25929/kotlin-stdlib-common-1.4.255-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.4.255-SNAPSHOT/5b8f86fea035328fc9e8c660773037a3401ce25f/kotlin-stdlib-common-1.4.255-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.4.255-SNAPSHOT/457a3c2bf67cd022070591782816e1fdbab2d5cd/kotlin-stdlib-common-1.4.255-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

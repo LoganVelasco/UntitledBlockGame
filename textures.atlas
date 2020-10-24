@@ -1,0 +1,27 @@
+
+textures.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+blueBlock_mouthClosed
+  rotate: false
+  xy: 1, 1
+  size: 57, 53
+  orig: 57, 53
+  offset: 0, 0
+  index: -1
+waterMap
+  rotate: false
+  xy: 1, 55
+  size: 128, 192
+  orig: 128, 192
+  offset: 0, 0
+  index: -1
+redBlock_mouthOpen
+  rotate: false
+  xy: 130, 194
+  size: 57, 53
+  orig: 57, 53
+  offset: 0, 0
+  index: -1

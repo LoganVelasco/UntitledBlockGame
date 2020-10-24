@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: lwjgl3.BlockParty2-0.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lwjgl3/build/libs/BlockParty2-0.0.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

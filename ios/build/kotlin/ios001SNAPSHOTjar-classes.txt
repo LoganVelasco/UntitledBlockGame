@@ -1,0 +1,1 @@
+C:\Users\Logan\workspace\libGDX\BlockPartyRemastered\ios\build\classes\kotlin\main\com\github\loganvelasco\bp2\ios\IOSLauncher$Companion.class;C:\Users\Logan\workspace\libGDX\BlockPartyRemastered\ios\build\classes\kotlin\main\com\github\loganvelasco\bp2\ios\IOSLauncher.class
