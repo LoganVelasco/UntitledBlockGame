@@ -81,6 +81,8 @@ class LoadingScreen(val game : BlockParty2): KtxScreen {
             if (waitTime <= 0) {
                 log.debug("assetManager diagnostics = ${assetManager.diagnostics}")
                 changeScreen = true
+                game.addScreen(MenuScreen(game))
+
             }
         }
     }

@@ -37,44 +37,6 @@ class GameController(val level: Level) {
 
     }
 
-//    private fun attemptMovePlayer(selectedDirection: String) {
-//        when(selectedDirection){
-//            "up" -> {
-//                if (isMoveInBounds(player,"up") && isSomethingThere(player.index + 1)) {
-//                    level.layout[player.index] = 0
-//                    player.index++
-//                    level.layout[player.index] = 1
-//                    movePlayer(0f, verticalSpace + tileSize)
-//                }
-//            }
-//            "down" -> {
-//                if (isMoveInBounds(player,"down") && isSomethingThere(player.index - 1)) {
-//                    level.layout[player.index] = 0
-//                    player.index--
-//                    level.layout[player.index] = 1
-//                    movePlayer(0f, -verticalSpace - tileSize)
-//                }
-//            }
-//            "right" -> {
-//                if(isMoveInBounds(player,"right") && isSomethingThere(player.index + level.gameY.roundToInt())) {
-//                    level.layout[player.index] = 0
-//                    player.index = player.index + level.gameY.roundToInt()
-//                    level.layout[player.index] = 1
-//                    movePlayer(horizontalSpace + tileSize, 0f)
-//                }
-//            }
-//            "left" -> {
-//                if(isMoveInBounds(player,"left") && isSomethingThere(player.index - level.gameY.roundToInt())) {
-//                    level.layout[player.index] = 0
-//                    player.index = player.index - level.gameY.roundToInt()
-//                    level.layout[player.index] = 1
-//                    movePlayer(-horizontalSpace - tileSize, 0f)
-//                }
-//            }
-//        }
-//
-//    }
-
     private fun isSomethingThere(newIndex: Int): Boolean {
         return when(level.layout[newIndex]){
             0 -> true
@@ -90,33 +52,49 @@ class GameController(val level: Level) {
         character.x = character.x + x
         character.y = character.y + y
         if(character is Player){
-            moveEnemy()
-            moveEnemy()
+            if(moveEnemy()) moveEnemy()
         }
     }
 
-    private fun moveEnemy() {
-        if(enemy.index % level.gameY == player.index % level.gameY)
-            if(enemy.index < player.index)
-                characterMoveCheck(enemy, "right")
-            else
-                characterMoveCheck(enemy, "left")
-        else{
-            val tempIndex = enemy.index
-            if(enemy.index % level.gameY > player.index % level.gameY)
+    private fun moveEnemy():Boolean {
+        if(areIndexesOnSameX(enemy.index, player.index)) {
+            return moveEnemyVertically()
+        }
+
+        if(attemptEnemyHorizontalMove())return true
+
+        return attemptEnemyVerticalMove()
+
+    }
+
+    private fun attemptEnemyVerticalMove(): Boolean {
+        if (!areIndexesOnSameY(enemy.index, player.index)) {
+            return if (enemy.index % level.gameY> player.index % level.gameY)
                 characterMoveCheck(enemy, "down")
             else
                 characterMoveCheck(enemy, "up")
-            if (tempIndex == enemy.index){
-                if(enemy.index < player.index)
-                    characterMoveCheck(enemy, "right")
-                else
-                    characterMoveCheck(enemy, "left")
-            }
         }
+        return false
     }
 
-    private fun characterMoveCheck(character: GameObjectBase, selectedDirection: String) {
+    private fun attemptEnemyHorizontalMove(): Boolean {
+        if (enemy.index > player.index) {
+            if (characterMoveCheck(enemy, "left")) return true
+        } else {
+            if (characterMoveCheck(enemy, "right")) return true
+        }
+        return false
+    }
+
+
+    private fun moveEnemyVertically(): Boolean {
+        return if (enemy.index < player.index)
+            characterMoveCheck(enemy, "up")
+        else
+            characterMoveCheck(enemy, "down")
+    }
+
+    private fun characterMoveCheck(character: GameObjectBase, selectedDirection: String):Boolean {
         when(selectedDirection){
             "up" -> {
                 if (isMoveInBounds(character,"up") && isSomethingThere(character.index + 1)) {
@@ -124,7 +102,9 @@ class GameController(val level: Level) {
                     character.index++
                     level.layout[character.index] = character.layoutCode
                     moveCharacter(character, 0f, verticalSpace + tileSize)
+                    return true
                 }
+                return false
             }
             "down" -> {
                 if (isMoveInBounds(character,"down") && isSomethingThere(character.index - 1)) {
@@ -132,7 +112,9 @@ class GameController(val level: Level) {
                     character.index--
                     level.layout[character.index] = character.layoutCode
                     moveCharacter(character, 0f, -verticalSpace - tileSize)
+                    return true
                 }
+                return false
             }
             "right" -> {
                 if(isMoveInBounds(character,"right") && isSomethingThere(character.index + level.gameY.roundToInt())) {
@@ -140,7 +122,9 @@ class GameController(val level: Level) {
                     character.index = character.index + level.gameY.roundToInt()
                     level.layout[character.index] = character.layoutCode
                     moveCharacter(character, horizontalSpace + tileSize, 0f)
+                    return true
                 }
+                return false
             }
             "left" -> {
                 if(isMoveInBounds(character,"left") && isSomethingThere(character.index - level.gameY.roundToInt())) {
@@ -148,10 +132,17 @@ class GameController(val level: Level) {
                     character.index = character.index - level.gameY.roundToInt()
                     level.layout[character.index] = character.layoutCode
                     moveCharacter(character, -horizontalSpace - tileSize, 0f)
+                    return true
                 }
+                return false
             }
         }
+        return false
     }
+    
+    private fun areIndexesOnSameY(index1: Int, index2: Int) = index1 % level.gameY == index2 % level.gameY
+
+    private fun areIndexesOnSameX(index1: Int, index2: Int) = index1 / level.gameY.roundToInt() == index2 / level.gameY.roundToInt()
 
     private fun isMoveInBounds(character: GameObjectBase, direction: String): Boolean {
         when(direction){
@@ -173,12 +164,6 @@ class GameController(val level: Level) {
             }
         }
         return false
-    }
-
-    // always see player in camera
-    private fun blockPlayerFromLeavingTheWorld(newX: Float):Boolean{
-        // has to do - player.HALF_SIZE else would stop where center hit bounds
-        return MathUtils.clamp(newX, 0f, GameConfig.WORLD_WIDTH - player.size) != newX
     }
 
     fun setupLevel(): ArrayList<BaseTile> {

@@ -4,6 +4,7 @@ object RegionNames {
     const val PLAYER = "player"
     const val ENEMY = "enemy"
     const val FOREST1 = "forestLevel1"
+    const val WORLDMAP_FOREST = "worldMapForestArea"
     const val BACKGROUND2 = "levelTwo"
     const val MENU_BUTTON_SKIN = "uiskin"
     const val TILE = "transparentLotus"

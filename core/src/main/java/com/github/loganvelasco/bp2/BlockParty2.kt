@@ -23,7 +23,6 @@ class BlockParty2 : KtxGame<Screen>() {
         Gdx.app.logLevel = Application.LOG_DEBUG
         assetManager.logger.level = Logger.DEBUG
         addScreen(LoadingScreen(this))
-        addScreen(MenuScreen(this))
         setScreen<LoadingScreen>()
     }
 
